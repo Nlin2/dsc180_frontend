@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 
 class AutoUpdateMicroservice extends Component {
     render() {
@@ -9,7 +9,7 @@ class AutoUpdateMicroservice extends Component {
                 <Form>
                     <Form.Group>
                         <Form.Label>
-                            Password:
+                            Password
                         </Form.Label>
                         <Form.Control type="password" placeholder="Your Microservice Password" />
                     </Form.Group>
