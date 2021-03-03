@@ -48,9 +48,9 @@ class ManholeGraph extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3>
+                <h4>
                     Manhole Graph Visualizer
-                </h3>
+                </h4>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Label>

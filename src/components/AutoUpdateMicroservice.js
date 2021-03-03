@@ -29,13 +29,17 @@ class AutoUpdateMicroservice extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3>Auto-Update Microservice</h3>
+                <h4>Auto-Update Microservice</h4>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Label>
                             Password
                         </Form.Label>
                         <Form.Control onChange={this.handlePasswordChange} type="password" placeholder="Your Microservice Password" />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Date</Form.Label>
+                        <Form.Control type="date" onChange={this.handleDateChange} name="graphDate"/>
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit

@@ -37,9 +37,9 @@ class StatisticsTool extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3>
+                <h4>
                     Statistics Tool
-                </h3>
+                </h4>
                 
                 <Form onSubmit={this.handleSubmit}>
                     <Row>

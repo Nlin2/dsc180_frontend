@@ -7,14 +7,32 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import AutoUpdateMicroservice from './components/AutoUpdateMicroservice';
 import ManholeGraph from './components/ManholeGraph';
 import StatisticsTool from './components/StatisticsTool';
+import { Row, Col } from 'react-bootstrap';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <AutoUpdateMicroservice />
-    <br/>
-    <StatisticsTool />
-    <br/>
-    <ManholeGraph />
+    <div className = "toolContainer">
+      <h3>RTL Research Tools</h3>
+      <Row>
+        <Col>
+          <div className = "tool">
+            <AutoUpdateMicroservice />
+          </div>
+          <br/>
+          <div className = "tool">
+            <StatisticsTool />
+          </div>
+        </Col>
+        <br/>
+        <Col>
+          <div className = "tool">
+            <ManholeGraph />
+          </div>
+        </Col>
+      </Row>
+    </div>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
