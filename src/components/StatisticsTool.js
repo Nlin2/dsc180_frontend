@@ -23,6 +23,7 @@ class StatisticsTool extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault(); 
+        console.log(JSON.stringify(this.state));
         fetch("https://4jzevgh86d.execute-api.us-east-1.amazonaws.com/default/StatsAPI", // get API Endpoints + Access-Control-Allow-Origin
             {
                 method: "POST",
@@ -32,6 +33,8 @@ class StatisticsTool extends Component {
                 body: JSON.stringify(this.state)
             }
         )
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
     }
 
     render() {

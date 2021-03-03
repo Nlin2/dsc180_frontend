@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 class AutoUpdateMicroservice extends Component {
     state = {
@@ -13,7 +13,7 @@ class AutoUpdateMicroservice extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        fetch("google.com", // get API Endpoints
+        fetch("https://4jzevgh86d.execute-api.us-east-1.amazonaws.com/default/sheet_update", // get API Endpoints
             {
                 method: "POST",
                 headers: {
@@ -22,8 +22,8 @@ class AutoUpdateMicroservice extends Component {
                 body: JSON.stringify(this.state)
             }
         )
-        .then(resp => console.log(resp))
-        .err(err => console.log(err))
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
     }
 
     render() {

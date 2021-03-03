@@ -22,6 +22,7 @@ class ManholeGraph extends Component {
             date: e.target.value, // What does the date format have to be? D/MM?
             mode: this.state.mode
         })
+        console.log(this.state)
     }
 
     handleModeChange = (e) => {
@@ -43,6 +44,8 @@ class ManholeGraph extends Component {
                 body: JSON.stringify(this.state)
             }
         )
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
     }
 
     render() {
@@ -56,7 +59,7 @@ class ManholeGraph extends Component {
                         <Form.Label>
                             Password
                         </Form.Label>
-                        <Form.Control type="password" placeholder="Your Microservice Password" />
+                        <Form.Control type="password" onChange={this.handlePasswordChange} placeholder="Your Microservice Password" />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Graph Date</Form.Label>
@@ -64,7 +67,7 @@ class ManholeGraph extends Component {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Mode</Form.Label>
-                        <Form.Control type="text" name="graphMode" onChange={this.handleModeChange} placeholder="i.e. update"/>
+                        <Form.Control type="text" name="graphMode" onChange={this.handleModeChange} value="update" placeholder="i.e. update"/>
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
