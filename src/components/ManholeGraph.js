@@ -44,7 +44,8 @@ class ManholeGraph extends Component {
                 body: JSON.stringify(this.state)
             }
         )
-        .then(data => console.log(data))
+        .then(resp => resp.json())
+        .then(obj => console.log(obj))
         .catch(error => console.log(error))
     }
 

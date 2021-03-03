@@ -24,16 +24,18 @@ class StatisticsTool extends Component {
     handleSubmit = (e) => {
         e.preventDefault(); 
         console.log(JSON.stringify(this.state));
-        fetch("https://4jzevgh86d.execute-api.us-east-1.amazonaws.com/default/StatsAPI", // get API Endpoints + Access-Control-Allow-Origin
+        fetch("https://1bn84nmly5.execute-api.us-east-1.amazonaws.com/test/StatsAPI",//https://4jzevgh86d.execute-api.us-east-1.amazonaws.com/default/StatsAPI", // get API Endpoints + Access-Control-Allow-Origin
             {
                 method: "POST",
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(this.state)
             }
         )
-        .then(data => console.log(data))
+        .then(resp => resp.json())
+        .then(obj => console.log(obj))
         .catch(error => console.log(error))
     }
 
