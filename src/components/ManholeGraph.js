@@ -46,7 +46,10 @@ class ManholeGraph extends Component {
         )
         .then(resp => resp.json())
         .then(obj => console.log(obj))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error);
+            alert("Incorrect password. Please try again.");
+        })
     }
 
     render() {
