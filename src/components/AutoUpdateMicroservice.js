@@ -23,7 +23,10 @@ class AutoUpdateMicroservice extends Component {
             }
         )
         .then(resp => resp.json())
-        .then(obj => console.log(obj))
+        .then(obj => { 
+            console.log(obj)
+            alert("Spreadsheet updated successfully!")
+        })
         .catch(error => {
             console.log(error)
             alert("Incorrect password. Please try again.");
