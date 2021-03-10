@@ -17,9 +17,12 @@ class ManholeGraph extends Component {
     }
 
     handleDateChange = (e) => {
+
+        let date = e.target.value;
+
         this.setState({
             password: this.state.password,
-            date: e.target.value, // What does the date format have to be? D/MM?
+            date: `${date.getMonth() + 1}/${date.getUTCDate()}/${date.getYear() - 100}`,
             mode: this.state.mode
         })
         console.log(this.state)
@@ -35,7 +38,7 @@ class ManholeGraph extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault(); 
-        fetch("https://4jzevgh86d.execute-api.us-east-1.amazonaws.com/default/traceAPI", // get API Endpoints + Access-Control-Allow-Origin
+        fetch("https://1bn84nmly5.execute-api.us-east-1.amazonaws.com/test/traceAPI", // get API Endpoints + Access-Control-Allow-Origin
             {
                 method: "POST",
                 headers: {
