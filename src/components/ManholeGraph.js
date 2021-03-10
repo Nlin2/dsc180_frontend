@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Table } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
 
 class ManholeGraph extends Component {
     state = {
         password: '',
         date: '',
-        mode: 'update'
+        mode: 'affected_buildings'
     };
 
     handlePasswordChange = (e) => {
@@ -18,26 +19,18 @@ class ManholeGraph extends Component {
 
     handleDateChange = (e) => {
 
-        let date = e.target.value;
+        let date = new Date(e.target.value);
 
         this.setState({
             password: this.state.password,
             date: `${date.getMonth() + 1}/${date.getUTCDate()}/${date.getYear() - 100}`,
             mode: this.state.mode
         })
-        console.log(this.state)
-    }
-
-    handleModeChange = (e) => {
-        this.setState({
-            password: this.state.password,
-            date: this.state.date,
-            mode: e.target.value
-        })
     }
 
     handleSubmit = (e) => {
         e.preventDefault(); 
+        console.log(this.state)
         fetch("https://1bn84nmly5.execute-api.us-east-1.amazonaws.com/test/traceAPI", // get API Endpoints + Access-Control-Allow-Origin
             {
                 method: "POST",
@@ -50,6 +43,26 @@ class ManholeGraph extends Component {
         .then(resp => resp.json())
         .then(obj => { 
             console.log(obj)
+
+            let cases = Object.values(obj).map(location => 
+                <tr key={location}><td key = "location">{location}</td></tr>);
+
+            const Results = () => (
+                <div>
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>CAANtxt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cases}
+                        </tbody>
+                    </Table>
+                </div>
+            )
+            ReactDOM.render(<Results />, document.querySelector("#table"))
+            
             alert("Graph updated successfully!")
         })
         .catch(error => {
@@ -59,6 +72,8 @@ class ManholeGraph extends Component {
     }
 
     render() {
+
+
         return (
             <React.Fragment>
                 <h4>
@@ -75,14 +90,12 @@ class ManholeGraph extends Component {
                         <Form.Label>Graph Date</Form.Label>
                         <Form.Control type="date" onChange={this.handleDateChange} name="graphDate"/>
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Mode</Form.Label>
-                        <Form.Control type="text" name="graphMode" onChange={this.handleModeChange} value="update" placeholder="i.e. update"/>
-                    </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
+
+                <div id='table'></div>
             </React.Fragment>
         )
     }
